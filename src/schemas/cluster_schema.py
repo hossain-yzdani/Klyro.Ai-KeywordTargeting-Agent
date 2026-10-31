@@ -11,3 +11,8 @@ class KeywordIntentOutput(BaseModel):
     le=1.0, 
     description="میزان اطمینان مدل از این دسته‌بندی از ۰ تا ۱"
   )
+  
+class ClusterNamingOutput(BaseModel):
+  cluster_name: str = Field(
+      description="نام موضوعی، دقیق و سئومحور برای این دسته از کلمات کلیدی (حداکثر ۴ کلمه)"
+  )
