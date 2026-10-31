@@ -10,6 +10,8 @@ pydantic = "*"
 langchain = "*"
 langgraph = "*"
 langgraph-checkpoint-postgres = "*"
+scikit-learn = "*"
+numpy = "*"
 
 [dev-packages]
 
