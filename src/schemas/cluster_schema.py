@@ -1,5 +1,5 @@
 from typing import Literal
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, List
 
 class KeywordIntentOutput(BaseModel):
   intent: Literal["Informational", "Commercial", "Transactional", "Navigational"] = Field(
@@ -21,3 +21,6 @@ class MarketDiscoveryOutput(BaseModel):
   identified_market: str = Field(description="عنوان بازار و پرسونای شناسایی‌شده")
   core_competitors: List[str] = Field(description="نام یا حوزه رقبای اصلی بازار")
   seed_keywords: List[str] = Field(description="حداقل ۵ کلمه کلیدی پایه و اصلی برای شروع")
+  
+class ExpandKeywordsOutput(BaseModel):
+  expanded_keywords: List[str] = Field(description="لیست عبارات بلند، سوالات و کلمات هم‌خانواده جستجوشده")
