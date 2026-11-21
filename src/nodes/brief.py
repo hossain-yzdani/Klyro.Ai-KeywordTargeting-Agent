@@ -20,7 +20,8 @@ def brief_node(state: KeywordTargetingState, llm) -> Dict[str, Any]:
       "نکات الزامی:\n"
       "- عنوان سئو و متا دیسکریپشن باید جذاب و نرخ کلیک‌محور (CTR-oriented) باشند.\n"
       "- ساختار هدینگ‌ها (H2 و H3) باید جریان منطقی پوشش موضوع را رعایت کند.\n"
-      "- سوالات متداول باید پاسخ‌دهنده دغدغه‌های واقعی جستجوگران باشند."
+      "- سوالات متداول باید پاسخ‌دهنده دغدغه‌های واقعی جستجوگران باشند.\n"
+      "- خروجی باید کاملاً مطابق با ساختار JSON باشد."
     ),
     (
       "user",
@@ -32,7 +33,7 @@ def brief_node(state: KeywordTargetingState, llm) -> Dict[str, Any]:
     )
   ])
 
-  structured_llm = llm.with_structured_output(SingleBriefOutput)
+  structured_llm = llm.with_structured_output(SingleBriefOutput, method="json_mode")
   chain = prompt | structured_llm
 
   for cluster in top_clusters:

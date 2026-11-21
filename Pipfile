@@ -12,6 +12,9 @@ langgraph = "*"
 langgraph-checkpoint-postgres = "*"
 scikit-learn = "*"
 numpy = "*"
+langchain-openai = "*"
+langchain-huggingface = "*"
+sentence-transformers = "*"
 
 [dev-packages]
 

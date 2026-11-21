@@ -42,7 +42,8 @@ def intent_node(state: KeywordTargetingState, llm) -> Dict[str, Any]:
       "- Informational: کسب اطلاعات و یادگیری\n"
       "- Commercial: مقایسه، تحقیق و انتخاب محصول یا سرویس\n"
       "- Transactional: اقدام مستقیم به خرید، دانلود یا ثبت‌نام\n"
-      "- Navigational: رفتن به یک صفحه، سایت یا آدرس مشخص"
+      "- Navigational: رفتن به یک صفحه، سایت یا آدرس مشخص\n"
+      "پاسخ باید در قالب فرمت JSON ارسال شود."
     ),
     (
       "user",
@@ -50,7 +51,7 @@ def intent_node(state: KeywordTargetingState, llm) -> Dict[str, Any]:
     )
   ])
   
-  structured_llm = llm.with_structured_output(KeywordIntentOutput)
+  structured_llm = llm.with_structured_output(KeywordIntentOutput, method="json_mode")
   intent_chain = prompt | structured_llm
 
   rule_count = 0

@@ -38,7 +38,8 @@ def cluster_node(state: KeywordTargetingState, embedding_model, llm) -> Dict[str
     (
       "system",
       "شما مدیر استراتژی محتوا هستید. با بررسی کلمات کلیدی یک خوشه، "
-      "یک عنوان موضوعی دقیق، شفاف و سئومحور (کمتر از ۴ کلمه) به زبان فارسی برای این گروه انتخاب کنید."
+      "یک عنوان موضوعی دقیق، شفاف و سئومحور (کمتر از ۴ کلمه) به زبان فارسی برای این گروه انتخاب کنید. "
+      "خروجی را در قالب JSON برگردانید."
     ),
     (
       "user",
@@ -46,7 +47,7 @@ def cluster_node(state: KeywordTargetingState, embedding_model, llm) -> Dict[str
     )
   ])
   
-  structured_naming = llm.with_structured_output(ClusterNamingOutput)
+  structured_naming = llm.with_structured_output(ClusterNamingOutput, method="json_mode")
   naming_chain = name_prompt | structured_naming
 
   cluster_summaries: List[ClusterSummary] = []
